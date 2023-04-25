@@ -34,7 +34,7 @@ require('lazy').setup({
       },
 
       -- Useful status updates for LSP
-      { 'j-hui/fidget.nvim',       opts = {} },
+      { 'j-hui/fidget.nvim', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -44,11 +44,14 @@ require('lazy').setup({
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
+    config = function()
+      require 'config.cmp'
+    end,
     dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',          opts = {} },
+  { 'folke/which-key.nvim', opts = {} },
   {
     'lewis6991/gitsigns.nvim',
     config = function()
@@ -61,7 +64,7 @@ require('lazy').setup({
     'navarasu/onedark.nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      --  vim.cmd.colorscheme 'onedark'
     end,
   },
 
@@ -69,14 +72,9 @@ require('lazy').setup({
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
-    opts = {
-      options = {
-        icons_enabled = false,
-        theme = 'onedark',
-        component_separators = '|',
-        section_separators = '',
-      },
-    },
+    config = function()
+      require 'config.lualine'
+    end,
   },
 
   {
@@ -93,7 +91,7 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim',         opts = {} },
+  { 'numToStr/Comment.nvim', opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },

@@ -22,6 +22,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.g.ft_theme = "onedark"
+require 'theme'.change_theme(vim.g.ft_theme)
+
 require 'plug'
 require('keymaps').basic()
 
@@ -68,12 +71,13 @@ require('telescope').setup {
 
 require('keymaps').telescope()
 
+
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 require 'config.mason'
 require 'config.lsp.rust'
 require 'config.lsp.ts'
 require 'config.treesitter'
-require 'config.cmp'
+require 'cmd'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

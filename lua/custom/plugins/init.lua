@@ -49,6 +49,7 @@ return {
 		dependencies = {
 			'nvim-lua/plenary.nvim',
 			'MunifTanjim/nui.nvim',
+			's1n7ax/nvim-window-picker',
 		},
 		config = function()
 			require 'config.nvimtree'
