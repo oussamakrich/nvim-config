@@ -6,7 +6,6 @@
 return {
   'neovim/nvim-lspconfig',
   config = function()
-    print("yes")
     -- Switch for controlling whether you want autoformatting.
     --  Use :KickstartFormatToggle to toggle autoformatting on or off
     local format_is_enabled = true
@@ -40,7 +39,6 @@ return {
         local client = vim.lsp.get_client_by_id(client_id)
         local bufnr = args.buf
 
-        print(client.name)
         -- Only attach to clients that support document formatting
         if not client.server_capabilities.documentFormattingProvider then
           return

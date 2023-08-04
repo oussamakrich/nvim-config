@@ -3,26 +3,26 @@ local servers = {
   gopls = {},
   pyright = {},
   emmet_ls = {},
+  docker_compose_language_service = {},
+  dockerls = {},
   rust_analyzer = {
 
   },
   prismals = {},
   tailwindcss = {},
   eslint = {},
-
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
     },
   },
-
 }
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
-  require"keymaps".lsp()
+  require "keymaps".lsp()
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
@@ -52,4 +52,3 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
-

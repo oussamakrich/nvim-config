@@ -5,6 +5,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 require 'opts'
+vim.g.ft_theme = 'tokyonight'
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
@@ -22,10 +23,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.ft_theme = "onedark"
-require 'theme'.change_theme(vim.g.ft_theme)
-
 require 'plug'
+-- require('theme').change_theme(vim.g.ft_theme)
 require('keymaps').basic()
 
 -- [[ Highlight on yank ]]
@@ -39,39 +38,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
--- [[ Configure Telescope ]]
--- See `:help telescope` and `:help telescope.setup()`
-require('telescope').setup {
-  defaults = {
-    selection_caret = ' ',
-    prompt_prefix = '  ',
-    layout_strategy = 'horizontal',
-    mappings = {
-      i = {
-        ['<C-u>'] = false,
-        ['<C-d>'] = false,
-      },
-    },
-    layout_config = {
-      prompt_position = 'top',
-    },
-  },
-  pickers = {
-    -- Your special builtin config goes in here
-    buffers = {
-      sort_lastused = true,
-      theme = 'dropdown',
-      previewer = false,
-    },
-    find_files = {
-      theme = 'dropdown',
-    },
-  },
-}
-
 require('keymaps').telescope()
-
-
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 require 'config.mason'

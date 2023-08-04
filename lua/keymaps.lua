@@ -1,6 +1,6 @@
 local map = vim.keymap.set
 local M = {}
-local winp = require 'config.win_picker'
+--local winp = require 'config.win_picker'
 
 -- [[ Basic Keymaps ]]
 
@@ -13,8 +13,8 @@ function M:basic()
   map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
   map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-  map('n', '<leader>w', winp.pick_win, { desc = 'Pick a window' })
-  map('n', '<leader>r', winp.replace_win, { desc = 'Replace a window' })
+  map('n', '<leader>w', require('config.win_picker').pick_win, { desc = 'Pick a window' })
+  map('n', '<leader>r', require('config.win_picker').replace_win, { desc = 'Replace a window' })
   map('n', '<leader>=', [[<C-w>=]], { desc = 'resize window to be equal' })
 
   -- resize
@@ -44,8 +44,8 @@ function M:basic()
   -- buf navigation
   map('n', '<M-Down>', [[gt]], { desc = 'goto prev tab' })
   map('n', '<M-Up>', [[gT]], { desc = 'goto next tab' })
-  map('n', '<M-Left>', [[<cmd>TablineBufferPrev<cr>]], { desc = 'goto next buffer' })
-  map('n', '<M-Right>', [[<cmd>TablineBufferNext<cr>]], { desc = 'goto prev buffer' })
+  map('n', '<M-Left>', [[<cmd>BufferLineCyclePrev<cr>]], { desc = 'goto next buffer' })
+  map('n', '<M-Right>', [[<cmd>BufferLineCycleNext<cr>]], { desc = 'goto prev buffer' })
   map('n', '<M-t>', [[<cmd>TablineTabNew<cr>]], { desc = 'create new tab' })
   map('n', '<M-r>', [[:TablineTabRename ]], { desc = 'rename current tab' })
 
@@ -67,7 +67,7 @@ end
 
 -- nvim-tree
 function M:nvim_tree()
-  map('n', '<leader>n', ':NeoTreeShowToggle<CR>', { desc = 'open nvim tree' })
+  map('n', '<leader>n', ':Neotree toggle<CR>', { desc = 'open nvim tree' })
 end
 
 function M:telescope()

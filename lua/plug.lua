@@ -26,6 +26,12 @@ require('lazy').setup({
           require 'config.lsp.ts'
         end, ]]
       },
+      --[[ {
+        'nvimdev/guard.nvim',
+        config = function()
+          require 'config.guard'
+        end,
+      }, ]]
       {
         'jose-elias-alvarez/null-ls.nvim',
         config = function()
@@ -34,7 +40,7 @@ require('lazy').setup({
       },
 
       -- Useful status updates for LSP
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim', opts = {}, branch = 'legacy' },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -94,7 +100,7 @@ require('lazy').setup({
   { 'numToStr/Comment.nvim', opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' }, opts = require 'config.telescope' },
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
