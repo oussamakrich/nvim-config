@@ -49,6 +49,9 @@ vim.opt.splitkeep = 'screen'
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
+vim.g.VM_theme = 'nord'
+vim.g.VM_leader = '\\'
+
 local signs = {
   Error = ' ',
   Warn = ' ',

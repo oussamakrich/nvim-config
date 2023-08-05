@@ -27,10 +27,10 @@ function M:basic()
   map('n', '<leader>m', [[<C-w>|]], { desc = 'maximize current window' })
 
   -- navigation
-  map('n', '<C-Left>', [[:wincmd h<cr>]], { desc = 'goto the left window' })
-  map('n', '<C-Down>', [[:wincmd j<cr>]], { desc = 'goto the bottom window' })
-  map('n', '<C-Up>', [[:wincmd k<cr>]], { desc = 'goto the right window' })
-  map('n', '<C-Right>', [[:wincmd l<cr>]], { desc = 'goto the right window' })
+  -- map('n', '<C-Left>', [[:wincmd h<cr>]], { desc = 'goto the left window' })
+  -- map('n', '<C-Down>', [[:wincmd j<cr>]], { desc = 'goto the bottom window' })
+  -- map('n', '<C-Up>', [[:wincmd k<cr>]], { desc = 'goto the right window' })
+  -- map('n', '<C-Right>', [[:wincmd l<cr>]], { desc = 'goto the right window' })
 
   -- i navigation
   map('i', '<C-h>', [[<Left>]], { desc = 'goto the left window' })

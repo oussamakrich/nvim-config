@@ -99,6 +99,16 @@ return {
           style = 'classic',
         },
         transparent_bg = false,
+        cursorline = {
+          -- Bold font in cursorline.
+          bold = false,
+          -- Bold cursorline number.
+          bold_number = true,
+          -- Avialable styles: 'dark', 'light'.
+          theme = 'light',
+          -- Blending the cursorline bg with the buffer bg.
+          blend = 1,
+        },
       }
       require('nordic').load()
     end,

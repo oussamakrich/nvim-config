@@ -1,45 +1,12 @@
-local colors = require('theme').get_theme_tb 'base_30'
+local c = require 'nordic.colors'
+local lsp_status = require 'lsp-status'
 
-local b = { bg = colors.darker_black, fg = colors.white }
-local c = { bg = colors.darker_black, fg = colors.gray }
-
-function get_colors()
-  return {
-    normal = {
-      a = { bg = colors.blue, fg = colors.black, gui = 'bold' },
-      b = { bg = colors.darker_black, fg = colors.white },
-      c = { bg = colors.darker_black, fg = colors.gray },
-    },
-    insert = {
-      a = { bg = colors.green, fg = colors.black, gui = 'bold' },
-      b = { bg = colors.darker_black, fg = colors.white },
-      c = { bg = colors.darker_black, fg = colors.gray },
-    },
-    visual = {
-      a = { bg = colors.yellow, fg = colors.black, gui = 'bold' },
-      b = { bg = colors.darker_black, fg = colors.white },
-      c = { bg = colors.darker_black, fg = colors.gray },
-    },
-    replace = {
-      a = { bg = colors.red, fg = colors.black, gui = 'bold' },
-      b = { bg = colors.darker_black, fg = colors.white },
-      c = { bg = colors.darker_black, fg = colors.gray },
-    },
-    command = {
-      a = { bg = colors.orange, fg = colors.black, gui = 'bold' },
-      b = { bg = colors.darker_black, fg = colors.white },
-      c = { bg = colors.darker_black, fg = colors.gray },
-    },
-    inactive = {
-      a = { bg = colors.darkgray, fg = colors.gray, gui = 'bold' },
-      b = { bg = colors.darker_black, fg = colors.white },
-      c = { bg = colors.darker_black, fg = colors.gray },
-    },
-  }
+local function relative_file()
+  return vim.fn.expand '%:~:.'
 end
 
-function relative_file()
-  return vim.fn.expand '%:~:.'
+local function lsp_progress()
+  return lsp_status.status()
 end
 
 require('lualine').setup {
@@ -51,18 +18,33 @@ require('lualine').setup {
     section_separators = '',
   },
   sections = {
-    lualine_a = { 'mode' },
+    lualine_a = { { 'mode', icon = { '' }, separator = { right = ' ', left = '' } } },
     lualine_b = {
-      --[[ { 'branch', icons_enabled = false },
+      { 'branch', icon = { '' } },
+      { relative_file, separator = { right = ' ', left = '' } },
+    },
+    lualine_c = {
+      'diagnostics',
       {
         'diff',
         symbols = { added = ' ', modified = ' ', removed = ' ' }, -- Changes the symbols used by the diff.
-      }, ]]
-      --,
+      },
+      lsp_progress,
     },
-    lualine_c = { relative_file, 'diagnostics' },
-    lualine_x = { 'encoding', 'fileformat', 'filetype' },
-    lualine_y = { 'progress' },
-    lualine_z = { 'location' },
+    lualine_x = { 'encoding', 'fileformat' },
+    lualine_y = {
+      { 'filetype', separator = { right = ' ', left = '' } },
+    },
+    lualine_z = {
+      {
+        'location',
+        icon = { '', align = 'left', color = { fg = c.black } },
+      },
+      {
+        'progress',
+        icon = { '', align = 'left', color = { fg = c.black } },
+        separator = { right = '', left = '' },
+      },
+    },
   },
 }

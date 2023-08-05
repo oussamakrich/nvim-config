@@ -4,9 +4,10 @@ return function()
       offsets = {
         {
           filetype = 'neo-tree',
-          text = '---------',
+          text = '󰙅 NEO TREE',
           text_align = 'left',
           separator = false,
+          highlight = 'TITLE',
         },
       },
     },

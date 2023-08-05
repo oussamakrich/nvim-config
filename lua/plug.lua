@@ -13,7 +13,7 @@ require('lazy').setup({
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
       'williamboman/mason-lspconfig.nvim',
-      { 'williamboman/mason.nvim', config = true },
+      { 'williamboman/mason.nvim', config = true, requires = { 'nvim-lua/lsp-status.nvim' } },
       {
         'simrat39/rust-tools.nvim',
         --[[ config = function()
@@ -26,12 +26,6 @@ require('lazy').setup({
           require 'config.lsp.ts'
         end, ]]
       },
-      --[[ {
-        'nvimdev/guard.nvim',
-        config = function()
-          require 'config.guard'
-        end,
-      }, ]]
       {
         'jose-elias-alvarez/null-ls.nvim',
         config = function()
@@ -40,7 +34,7 @@ require('lazy').setup({
       },
 
       -- Useful status updates for LSP
-      { 'j-hui/fidget.nvim', opts = {}, branch = 'legacy' },
+      { 'nvim-lua/lsp-status.nvim' },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -77,7 +71,8 @@ require('lazy').setup({
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
-    -- See `:help lualine.txt`
+    -- See `:help lualine.txt`,
+    requires = { 'nvim-lua/lsp-status.nvim' },
     config = function()
       require 'config.lualine'
     end,

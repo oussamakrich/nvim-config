@@ -6,6 +6,11 @@ vim.g.maplocalleader = ' '
 
 require 'opts'
 vim.g.ft_theme = 'tokyonight'
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python_provider = 0
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
