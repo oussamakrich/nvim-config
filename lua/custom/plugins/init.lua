@@ -20,7 +20,7 @@ return {
     magic_window = true,
   } },
   { 'akinsho/bufferline.nvim', version = '*', dependencies = 'nvim-tree/nvim-web-devicons', config = require 'config.tabline' },
-  { 'akinsho/toggleterm.nvim', version = '*', config = require 'config.term' },
+  { 'akinsho/toggleterm.nvim', version = '*', config = require('config.term').setup },
   {
     'norcalli/nvim-colorizer.lua',
     config = function()

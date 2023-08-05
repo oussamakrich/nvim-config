@@ -26,20 +26,8 @@ function M:basic()
   -- maximizer
   map('n', '<leader>m', [[<C-w>|]], { desc = 'maximize current window' })
 
-  -- navigation
-  -- map('n', '<C-Left>', [[:wincmd h<cr>]], { desc = 'goto the left window' })
-  -- map('n', '<C-Down>', [[:wincmd j<cr>]], { desc = 'goto the bottom window' })
-  -- map('n', '<C-Up>', [[:wincmd k<cr>]], { desc = 'goto the right window' })
-  -- map('n', '<C-Right>', [[:wincmd l<cr>]], { desc = 'goto the right window' })
-
-  -- i navigation
-  map('i', '<C-h>', [[<Left>]], { desc = 'goto the left window' })
-  map('i', '<C-j>', [[<Down>]], { desc = 'goto the bottom window' })
-  map('i', '<C-k>', [[<Up>]], { desc = 'goto the right window' })
-  map('i', '<C-l>', [[<Right>]], { desc = 'goto the right window' })
-
-  map('v', '<M-j>', 'dp1V', { desc = 'switch current with next' })
-  map('v', '<M-k>', 'dkP1v', { desc = 'switch current with prev' })
+  map('v', '<C-j>', 'dp1V', { desc = 'switch current with next' })
+  map('v', '<C-k>', 'dkP1v', { desc = 'switch current with prev' })
 
   -- buf navigation
   map('n', '<M-Down>', [[gt]], { desc = 'goto prev tab' })
@@ -63,6 +51,11 @@ function M:basic()
   map('n', '<leader>bs', [[:w]], { desc = 'save current buffer' }) -- save buffer
   -- registers
   map('v', 'p', [["_dP]])
+
+  -- terminal
+  map({ 'n', 't' }, '<leader>tn', require('config.term').new_terminal, { desc = 'new [T]erminal' })
+  map({ 'n', 't' }, '<C-k>', require('config.term').toggle_all, { desc = 'toggle all [T]erminal' })
+  map({ 't' }, '<esc>', '<C-\\><C-n>', { desc = 'switch to terminal mode' })
 end
 
 -- nvim-tree
@@ -82,7 +75,7 @@ function M:telescope()
     })
   end, { desc = '[/] Fuzzily search in current buffer' })
 
-  map('n', '<M-f>', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+  map('n', '<leader><leader>', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
   map('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
   map('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
   map('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
