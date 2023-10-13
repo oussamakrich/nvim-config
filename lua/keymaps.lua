@@ -3,8 +3,10 @@ local M = {}
 --local winp = require 'config.win_picker'
 
 -- [[ Basic Keymaps ]]
+--
 
 function M:basic()
+  local sample = require('telescope.themes').get_dropdown { winblend = 10, previewer = true }
   -- Keymaps for better default experience
   -- See `:help vim.keymap.set()`
   map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -56,6 +58,18 @@ function M:basic()
   map({ 'n', 't' }, '<leader>tn', require('config.term').new_terminal, { desc = 'new [T]erminal' })
   map({ 'n', 't' }, '<C-k>', require('config.term').toggle_all, { desc = 'toggle all [T]erminal' })
   map({ 't' }, '<esc>', '<C-\\><C-n>', { desc = 'switch to terminal mode' })
+
+  -- qf list
+  map('n', '<leader>qo', [[<Cmd>copen<CR>]], { desc = 'open [Q]uickfix list' })
+  map('n', '<leader>qc', [[<Cmd>cclose<CR>]], { desc = 'close [Q]uickfix list' })
+  map('n', '<leader>qn', [[<Cmd>cnext<CR>]], { desc = 'next [Q]uickfix item' })
+  map('n', '<leader>qp', [[<Cmd>cprev<CR>]], { desc = 'prev [Q]uickfix item' })
+  map('n', '<leader>qf', [[<Cmd>cfirst<CR>]], { desc = 'first [Q]uickfix item' })
+  map('n', '<leader>ql', [[<Cmd>clast<CR>]], { desc = 'last [Q]uickfix item' })
+  map('n', '<leader>qt', [[<Cmd><CR>]], { desc = 'next [Q]uickfix item' })
+  map('n', '<leader>qt', function()
+    require('telescope.builtin').quickfix(sample)
+  end, { desc = '[Q]uickfix [T]elescope' })
 end
 
 -- nvim-tree
