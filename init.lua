@@ -53,3 +53,11 @@ require 'config.treesitter'
 require 'cmd'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+local group = vim.api.nvim_create_augroup('__env', { clear = true })
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = '.env',
+  group = group,
+  callback = function(args)
+    vim.diagnostic.disable(args.buf)
+  end,
+})
