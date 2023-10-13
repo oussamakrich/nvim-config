@@ -7,6 +7,10 @@ return {
   'tpope/vim-fugitive',
   'machakann/vim-sandwich',
   'mg979/vim-visual-multi',
+  {
+    'TobinPalmer/rayso.nvim',
+    opts = {},
+  },
   { 'abellaismail7/42header.nvim', ft = { 'c', 'cpp' } },
   { '42Paris/42header', ft = { 'c', 'cpp' } },
   -- utils
