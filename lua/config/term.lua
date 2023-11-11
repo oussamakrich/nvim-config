@@ -16,10 +16,10 @@ end
 
 function M.setup()
   require('toggleterm').setup {
-    open_mapping = nil,
+    open_mapping = "<C-k>",
     insert_mappings = false,
     shade_terminals = false,
-    --	direction = "float",
+    direction = "float",
     float_opts = {
       border = 'single',
       winblend = 3,

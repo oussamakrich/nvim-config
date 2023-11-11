@@ -14,7 +14,6 @@ lsp_status.register_progress()
 
 local servers = {
   clangd = {},
-  gopls = {},
   pyright = {},
   emmet_ls = {},
   docker_compose_language_service = {},

@@ -55,8 +55,8 @@ function M:basic()
   map('v', 'p', [["_dP]])
 
   -- terminal
-  map({ 'n', 't' }, '<leader>tn', require('config.term').new_terminal, { desc = 'new [T]erminal' })
-  map({ 'n', 't' }, '<C-k>', require('config.term').toggle_all, { desc = 'toggle all [T]erminal' })
+  -- map({ 'n', 't' }, '<leader>tn', require('config.term').new_terminal, { desc = 'new [T]erminal' })
+  -- map({ 'n', 't' }, '<C-k>', require('config.term').toggle_all, { desc = 'toggle all [T]erminal' })
   map({ 't' }, '<esc>', '<C-\\><C-n>', { desc = 'switch to terminal mode' })
 
   -- qf list
@@ -74,7 +74,8 @@ end
 
 -- nvim-tree
 function M:nvim_tree()
-  map('n', '<leader>n', ':Neotree toggle<CR>', { desc = 'open nvim tree' })
+  map('n', '<leader>n', ':Neotree focus<CR>', { desc = 'open nvim tree' })
+  map('n', '<leader>h', ':Neotree toggle<CR>', { desc = 'open nvim tree' })
 end
 
 function M:telescope()
@@ -89,7 +90,7 @@ function M:telescope()
     })
   end, { desc = '[/] Fuzzily search in current buffer' })
 
-  map('n', '<leader><leader>', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+  map('n', '<M-f>', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
   map('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
   map('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
   map('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
@@ -133,8 +134,8 @@ end
 
 function M.diagnostic()
   -- Diagnostic keymaps
-  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+  vim.keymap.set('n', ',b', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
+  vim.keymap.set('n', ',d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
   vim.keymap.set('n', ',e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
   vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 end
